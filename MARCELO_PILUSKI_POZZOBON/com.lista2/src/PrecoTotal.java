@@ -23,6 +23,6 @@ public class PrecoTotal {
     }
 
     public static double descontoEspecial(double preco) {
-        return preco * 0.9; // coloca 10% a mais no preço
+        return preco * 0.9; // coloca 10% a menos no preço
     }
 }

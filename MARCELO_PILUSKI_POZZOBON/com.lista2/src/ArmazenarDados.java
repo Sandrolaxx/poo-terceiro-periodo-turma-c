@@ -28,7 +28,9 @@ public class ArmazenarDados {
         valores.add(valorResponse);
         descontos.add(descontoResponse);
 
-        //for(int i; i <= produtos.length(); i++)
-        System.out.println("Produtos: " + produtos + "\n" + "Valores: " + valores + "\n" + "Descontos: " + descontos + "\n");
+        for(int i = 0; i < produtos.size(); i++) {
+            System.out.println("Venda " + (i+1) + " Quantidade :" + produtos.get(i) + " Descontos: " + descontos.get(i) + " Preço: R$" + valores.get(i));
+        }
+        
     }
 }
