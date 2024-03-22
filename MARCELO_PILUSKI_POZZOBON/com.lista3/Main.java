@@ -17,9 +17,11 @@ public class Main {
 
     }
 
-    public static void menu(Scanner opcao, int varOpcao, PrecoTotal varPrecoTotal, Troco varTroco, ArmazenarDadosNovo varArmazenarDados) {
+    public static void menu(Scanner opcao, int varOpcao, PrecoTotal varPrecoTotal, Troco varTroco,
+            ArmazenarDadosNovo varArmazenarDados) {
         do {
-            System.out.println("[1] - Calcular Preço Total \n[2] - Calcular Troco \n[3] - Armazenar Dados (Dias do Mês)\n[4] - Sair");
+            System.out.println(
+                    "[1] - Calcular Preço Total \n[2] - Calcular Troco \n[3] - Armazenar Dados (Dias do Mês)\n[4] - Vendas Dia\n[5] - Sair");
             varOpcao = opcao.nextInt();
 
             switch (varOpcao) {
@@ -34,8 +36,12 @@ public class Main {
                 case 3:
                     varArmazenarDados.armazenarDados();
                     break;
-
+                
                 case 4:
+                    varArmazenarDados.escreverMes();
+                    break;
+
+                case 5:
                     System.out.println("Calculadora encerrada!");
                     break;
 
@@ -43,6 +49,6 @@ public class Main {
                     System.out.println("Erro de digitação, escolha uma das opções novamente.");
                     break;
             }
-        } while (varOpcao != 4);
+        } while (varOpcao != 5);
     }
 }
