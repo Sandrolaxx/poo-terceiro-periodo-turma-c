@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class CalculadoraPlantas {
+public class CalculadoraPlantasParte1 {
 
     @SuppressWarnings("resource")
     public static void main(String[] args) {
