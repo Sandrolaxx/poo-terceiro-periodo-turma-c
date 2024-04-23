@@ -2,7 +2,6 @@ package lista_1.classes.menu;
 
 import java.util.Locale;
 import java.util.Scanner;
-
 import lista_1.classes.calculadora.*;
 
 public class Menu {
@@ -30,10 +29,10 @@ public class Menu {
       switch (this.user) {
 
         case 1:
-          System.out.println("Quantos produtos foram vendidos?");
+          System.out.println("Quantidade de itens vendidos?");
           this.quant_vendida = dados.nextInt();
           dados.nextLine();
-          System.out.println("Qual o valor dos produtos? ");
+          System.out.println("Valor dos produtos? ");
           this.preco_produto = dados.nextDouble();
           dados.nextLine();
           calc.setPrecoDaVenda(this.quant_vendida, this.preco_produto);
