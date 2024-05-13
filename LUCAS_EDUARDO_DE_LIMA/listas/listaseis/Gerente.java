@@ -23,7 +23,11 @@ public class Gerente extends Pessoa {
     this.salarioBase = salarioBase;
 }
 
-public void setLoja(Loja loja) {
+public void setLoja(
+
+
+
+        Loja loja) {
     this.loja = loja;
 }
 
