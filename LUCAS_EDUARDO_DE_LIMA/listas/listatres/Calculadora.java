@@ -8,13 +8,13 @@ public class Calculadora {
 
         while (true) {
             int opcao = menu();
-    
+
             switch (opcao) {
                 case 1 -> calcularTotal();
 
 
-                default:
-                    break;
+                default -> System.out.println("calculadora");
+
             }
         }
     }
@@ -53,13 +53,13 @@ public class Calculadora {
         if (salvarVenda.equalsIgnoreCase("s")) {
 
         }
-    
-        
+
+
+//private static void salvarVendas () {
+
+        //}
+
+
+        return quantidade;
     }
-
-    private static void salvarVendas(){
-        
-    }
-
-
 }

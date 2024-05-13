@@ -1,4 +1,4 @@
-package listas.listasete;
+package LUCAS_EDUARDO_DE_LIMA.listas.listasete;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,7 +105,6 @@ public class MyyPlantTest {
         }
     }
 
-    @SuppressWarnings("resource")
     public static int menu() {
         System.out.println("****************");
         System.out.println("1 - Cadastrar Item");
@@ -117,3 +116,4 @@ public class MyyPlantTest {
         return new Scanner(System.in).nextInt();
     }
 }
+

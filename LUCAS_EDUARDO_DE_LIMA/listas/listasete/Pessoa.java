@@ -1,4 +1,4 @@
-package listas.listasete;
+package LUCAS_EDUARDO_DE_LIMA.listas.listasete;
 
 public abstract class Pessoa {
 
@@ -8,9 +8,9 @@ public abstract class Pessoa {
 - Método apresentarse deve printar o nome, idade e Loja.
 - calcularMedia deve trazer a média dos salários.
 - calcularBonus onde a fórmula é [salarioBase * 0.35].*/
-    protected String nome;
-    protected Integer idade;
-    protected Endereco endereco;
+    String nome;
+    Integer idade;
+    Endereco endereco;
 
     public Pessoa(String nome, Integer idade, Endereco endereco) {
         this.nome = nome;
@@ -18,29 +18,5 @@ public abstract class Pessoa {
         this.endereco = endereco;
     }
 
-public String getNome() {
-    return nome;
-}
-
-public Integer getIdade() {
-    return idade;
-}
-
-public Endereco getEndereco() {
-    return endereco;
-}
-
-public void setNome(String nome) {
-    this.nome = nome;
-}
-
-public void setIdade(Integer idade) {
-    this.idade = idade;
-}
-
-public void setEndereco(Endereco endereco) {
-    this.endereco = endereco;
-}
-
-public abstract void apresentarse();
+    public abstract void apresentarse();
 }
