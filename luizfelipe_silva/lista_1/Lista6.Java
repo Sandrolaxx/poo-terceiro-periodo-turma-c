@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-// Classe Endereco
+
 class Endereco {
     String estado;
     String cidade;
@@ -22,7 +22,7 @@ class Endereco {
     }
 }
 
-// Classe Pessoa (para ser usada como superclasse de Cliente, Vendedor e Gerente)
+
 class Pessoa {
     String nome;
     int idade;
@@ -39,7 +39,7 @@ class Pessoa {
     }
 }
 
-// Classe Gerente
+
 class Gerente extends Pessoa {
     String rua;
     double salarioBase;
@@ -65,7 +65,6 @@ class Gerente extends Pessoa {
     }
 }
 
-// Classe Item
 class Item {
     int id;
     String nome;
@@ -84,7 +83,6 @@ class Item {
     }
 }
 
-// Classe Pedido
 class Pedido {
     int id;
     Date dataCriacao;
@@ -119,11 +117,11 @@ class Pedido {
     }
 }
 
-// Classe ProcessaPedido
+
 class ProcessaPedido {
     public void processar(int id, Cliente cliente, Vendedor vendedor, String loja, ArrayList<Item> itens) {
         Pedido pedido = new Pedido(id, cliente, vendedor, loja, itens);
-        // Realizar processamento do pedido...
+        
         confirmarPagamento(pedido);
     }
 
@@ -137,24 +135,24 @@ class ProcessaPedido {
     }
 }
 
-// Classe Cliente
+
 class Cliente extends Pessoa {
     public Cliente(String nome, int idade, String loja) {
         super(nome, idade, loja);
     }
 }
 
-// Classe Vendedor
+
 class Vendedor extends Pessoa {
     public Vendedor(String nome, int idade, String loja) {
         super(nome, idade, loja);
     }
 }
 
-// Classe principal (Main)
+
 public class Main {
     public static void main(String[] args) {
-        // Exemplo de uso das classes
+        
         Endereco endereco = new Endereco("SP", "São Paulo", "Centro", 123, "Rua A");
         endereco.apresentarLogradouro();
 
