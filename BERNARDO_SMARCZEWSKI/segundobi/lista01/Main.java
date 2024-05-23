@@ -103,7 +103,7 @@ public class Main {
 
     }
 
-    // ATV 03
+    // MÉTODO 03
     public static HashSet<String> removerJogos(ArrayList<String> array) {
 
         HashSet<String> jogos = new HashSet<>(array);
@@ -111,7 +111,7 @@ public class Main {
         
     }
 
-    // ATV 04
+    // MÉTODO 04
     public static PriorityQueue<String> ordenar(ArrayList<String> array) {
         
         PriorityQueue<String> filmes = new PriorityQueue<>(array);
@@ -119,7 +119,7 @@ public class Main {
 
     }
 
-    // ATV 05
+    // MÉTODO 05
     public static void imprimirHardware(HashMap<String, String> hardware) {
 
         for (HashMap.Entry<String, String> entry : hardware.entrySet()) {
