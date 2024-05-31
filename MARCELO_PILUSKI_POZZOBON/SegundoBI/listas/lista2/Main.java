@@ -7,16 +7,19 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // atividade 01
-        //atv01();
+        atv01();
 
         // atividade 02
-        //atv02();
+        atv02();
 
         // atividade 03
-        //atv03();
+        atv03();
 
-        // atividade 04
+        // atividade 04 e 05
         atv04();
+
+        // atividade 06
+        atv06();
     }
 
     public static void atv01() {
@@ -35,29 +38,10 @@ public class Main {
     }
 
     public static void atv04() {
-        
-        
-        Produto teclado = new Produto();
-        Produto mouse = new Produto();
-        Produto monitor = new Produto();
-        Produto headphone = new Produto();
-
-        teclado.nome = "teclado";
-        teclado.preco = 100;
-        mouse.nome = "mouse";
-        mouse.preco = 350;
-        monitor.nome = "monitor";
-        monitor.preco = 1500;
-        headphone.nome = "headphone";
-        headphone.preco = 316;
-
-        
-
-        System.out.println(teclado.nome);
-    }
-
-    public static void atv05() {
-
+        List<Produto> produtos = Arrays.asList(new Produto("Teclado", 100.0), new Produto("Mouse", 350.0), new Produto("Monitor", 1500.0), new Produto("Headphone", 316.0));
+        List<Produto> produtosFiltrados = produtos.stream().filter(item -> item.getPreco() > 100.0).collect(Collectors.tolist());
+        System.out.println(produtosFiltrados);
+        double somaProdutos = produtos.stream().mapToDouble(Produto::getPreco).sum();
     }
 
     public static void atv06() {
