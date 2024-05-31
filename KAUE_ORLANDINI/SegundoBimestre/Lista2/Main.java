@@ -3,9 +3,7 @@ package KAUE_ORLANDINI.SegundoBimestre.Lista2;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 
@@ -74,25 +72,6 @@ public class Main {
         System.out.println(" ");
         System.out.println("Atividade 4 ");
         
-
-        class Produto {
-            private String nome;
-            private double preco;
-        
-            public Produto(String nome, double preco) {
-                this.nome = nome;
-                this.preco = preco;
-            }
-        
-            public String getNome() {
-                return nome;
-            }
-        
-            public double getPreco() {
-                return preco;
-            }
-        }
-
         List<Produto> produtos = new ArrayList<>();
         produtos.add(new Produto("Produto 1", 50.0));
         produtos.add(new Produto("Produto 2", 150.0));
