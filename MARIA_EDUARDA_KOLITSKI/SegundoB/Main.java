@@ -1,75 +1,79 @@
 package SegundoB;
 
 import java.util.*;
+import java.util.stream.*;
+
+class Produto {
+    private String nome;
+    private double preco;
+
+    public Produto(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" +
+                "nome='" + nome + '\'' +
+                ", preco=" + preco +
+                '}';
+    }
+}
 
 public class Main {
     public static void main(String[] args) {
+        // ATV1
+        List<Integer> numeros = Arrays.asList(10, 23, 45, 67, 88, 92, 101, 120);
+        List<Integer> pares = numeros.stream()
+                .filter(num -> num % 2 == 0)
+                .collect(Collectors.toList());
+        System.out.println("Números pares: " + pares);
 
-        ArrayList<String> colegas = new ArrayList<>();
-        colegas.add("Giullia");
-        colegas.add("Eduarda");
-        colegas.add("Clara");
-        colegas.add("Erika");
-        colegas.add("Isabela");
-        
-        System.out.println("=== Atividade 1 ===");
-        for (String nome : colegas) {
-            System.out.println(nome.charAt(0) + " - " + nome);
-        }
-        
-        HashSet<Integer> numeros = new HashSet<>();
-        numeros.add(1);
-        numeros.add(2);
-        numeros.add(3);
-        numeros.add(3); 
-        
-        int numeroVerificar = 3;
-        System.out.println("\n=== Atividade 2 ===");
-        if (numeros.contains(numeroVerificar)) {
-            System.out.println("O conjunto contém o número " + numeroVerificar);
-        } else {
-            System.out.println("O conjunto não contém o número " + numeroVerificar);
-        }
-        
-        ArrayList<String> jogosZerados = new ArrayList<>();
-        jogosZerados.add("The Witcher 3");
-        jogosZerados.add("The Witcher 3");
-        jogosZerados.add("Dark Souls");
-        jogosZerados.add("Dark Souls");
-        jogosZerados.add("Bloodborne");
-        
-        System.out.println("\n=== Atividade 3 ===");
-        ArrayList<String> jogosUnicos = removerDuplicatas(jogosZerados);
-        System.out.println("Jogos zerados únicos: " + jogosUnicos);
-        
-        PriorityQueue<String> melhoresAnimes = new PriorityQueue<>();
-        melhoresAnimes.add("Death Note");
-        melhoresAnimes.add("Attack on Titan");
-        melhoresAnimes.add("Naruto");
-        melhoresAnimes.add("Jujutsu");
-        melhoresAnimes.add("Demon Slayer");
-        
-        System.out.println("\n=== Atividade 4 ===");
-        System.out.println("Melhores animes/filmes ordenados:");
-        while (!melhoresAnimes.isEmpty()) {
-            System.out.println(melhoresAnimes.poll());
-        }
+        // ATV2
+        List<String> nomes = Arrays.asList("roberto", "josé", "caio", "vinicius");
+        List<String> maiusculas = nomes.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.toList());
+        System.out.println("Nomes em maiúsculas: " + maiusculas);
 
-        HashMap<String, String> configuracoesHardware = new HashMap<>();
-        configuracoesHardware.put("Processador", "i5 7500U");
-        configuracoesHardware.put("Placa de vídeo", "Nvidia GTX 1660 Ti");
-        configuracoesHardware.put("Memória RAM", "16GB DDR4");
-        configuracoesHardware.put("Armazenamento", "SSD 512GB");
-        configuracoesHardware.put("Monitor", "LG Ultragear 144Hz");
-        
-        System.out.println("\n=== Atividade 5 ===");
-        for (Map.Entry<String, String> entry : configuracoesHardware.entrySet()) {
-            System.out.println(entry.getKey() + ": " + entry.getValue());
-        }
-    }
-    
-    private static ArrayList<String> removerDuplicatas(ArrayList<String> lista) {
-        HashSet<String> conjunto = new HashSet<>(lista);
-        return new ArrayList<>(conjunto);
+        // ATV3
+        List<String> palavras = Arrays.asList("se", "talvez", "hoje", "sábado", "se", "quarta", "sábado");
+        Map<String, Long> contagemPalavras = palavras.stream()
+                .collect(Collectors.groupingBy(w -> w, Collectors.counting()));
+        System.out.println("Contagem de palavras: " + contagemPalavras);
+
+        // ATV4
+        List<Produto> produtos = Arrays.asList(
+                new Produto("Produto1", 150.0),
+                new Produto("Produto2", 80.0),
+                new Produto("Produto3", 200.0),
+                new Produto("Produto4", 120.0)
+        );
+        List<Produto> produtosCaros = produtos.stream()
+                .filter(p -> p.getPreco() > 100.0)
+                .collect(Collectors.toList());
+        System.out.println("Produtos com preço maior que R$ 100,00: " + produtosCaros);
+
+        // ATV5
+        double total = produtos.stream()
+                .mapToDouble(Produto::getPreco)
+                .sum();
+        System.out.println("Valor total dos produtos: R$ " + total);
+
+        // ATV6
+        List<String> linguagens = Arrays.asList("Java", "Python", "C", "JavaScript", "Ruby");
+        List<String> ordenadasPorTamanho = linguagens.stream()
+                .sorted(Comparator.comparingInt(String::length))
+                .collect(Collectors.toList());
+        System.out.println("Linguagens ordenadas por tamanho: " + ordenadasPorTamanho);
     }
 }
