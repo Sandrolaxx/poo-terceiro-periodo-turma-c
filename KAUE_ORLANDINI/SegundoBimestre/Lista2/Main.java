@@ -79,8 +79,8 @@ public class Main {
         produtos.add(new Produto("Produto 4", 200.0));
 
         List<Produto> produtosCaros = produtos.stream()
-                                            .filter(p -> p.getPreco() > 100.0)
-                                            .collect(Collectors.toList());
+                .filter(p -> p.getPreco() > 100.0)
+                .collect(Collectors.toList());
 
         
         System.out.println("Produtos com preço maior que R$ 100,00:");
@@ -93,8 +93,8 @@ public class Main {
         System.out.println("");
         System.out.println("Atividade 5");
         double total = produtos.stream()
-                               .mapToDouble(Produto::getPreco)
-                               .sum();
+                .mapToDouble(Produto::getPreco)
+                .sum();
 
         System.out.println("Valor total dos produtos: R$" + total);
        
