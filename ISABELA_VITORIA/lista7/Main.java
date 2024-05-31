@@ -81,7 +81,7 @@ public class Main {
                 System.out.println("Encerrando o menu, até mais");
                 break;
             }
-
+            //cadastro
             switch (opcao) {
                 case 1:
                     loja.cadastrarItem(criarItem());
