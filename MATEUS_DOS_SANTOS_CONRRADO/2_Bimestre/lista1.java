@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class lista1 {
     public static void main(String[] args) {
         // ATV1
         ArrayList<String> amigos = new ArrayList<>();
