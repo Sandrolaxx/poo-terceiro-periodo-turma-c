@@ -1,7 +1,7 @@
 package KAUE_ORLANDINI.SegundoBimestre.Lista2;
 
 public class Produto {
-    private String nome;
+            private String nome;
             private double preco;
         
             public Produto(String nome, double preco) {
