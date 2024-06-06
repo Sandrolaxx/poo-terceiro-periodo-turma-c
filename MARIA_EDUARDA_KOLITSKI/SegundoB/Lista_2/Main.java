@@ -1,4 +1,4 @@
-package SegundoB;
+package SegundoB.Lista_2;
 
 import java.util.*;
 import java.util.stream.*;
