@@ -1,4 +1,4 @@
-package LUCAS_EDUARDO_DE_LIMA.listas.listaum;
+package listas.listaum;
 
 import java.util.Scanner;
 

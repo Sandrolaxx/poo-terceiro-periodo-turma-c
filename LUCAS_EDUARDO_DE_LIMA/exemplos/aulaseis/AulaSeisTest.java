@@ -1,4 +1,4 @@
-package LUCAS_EDUARDO_DE_LIMA.exemplos.aulaseis;
+package exemplos.aulaseis;
 
 public class AulaSeisTest {
     
