@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/2º bimestre/aulas/aulas.iml" filepath="$PROJECT_DIR$/2º bimestre/aulas/aulas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2º bimestre/listas/lista03/lista03.iml" filepath="$PROJECT_DIR$/2º bimestre/listas/lista03/lista03.iml" />
+      <module fileurl="file://$PROJECT_DIR$/2º bimestre/listas/listas.iml" filepath="$PROJECT_DIR$/2º bimestre/listas/listas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/poo-terceiro-periodo-turma-c.iml" filepath="$PROJECT_DIR$/poo-terceiro-periodo-turma-c.iml" />
+    </modules>
+  </component>
+</project>
