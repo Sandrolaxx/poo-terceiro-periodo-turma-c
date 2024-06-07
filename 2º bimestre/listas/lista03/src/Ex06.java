@@ -56,7 +56,5 @@ public class Ex06 {
         JOptionPane.showMessageDialog(null, "Resultado: " + resultado,
                 "Cálculo", JOptionPane.INFORMATION_MESSAGE);
     }
-
-
 }
 
