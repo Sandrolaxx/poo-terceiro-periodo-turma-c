@@ -30,7 +30,6 @@ public class Main {
     
     }
 
-
     //ATV4
     public static String mostrarMenu() {
         String[] opcoes = {"Opção 1", "Opção 2", "cancelar"};
@@ -45,7 +44,7 @@ public class Main {
         }
     }
     
-    public static void Mensagem(String opcaoEscolhida) {
+    public static void mensagem(String opcaoEscolhida) {
         if (opcaoEscolhida != null) {
             String mensagem = "Você escolheu a opção: " + opcaoEscolhida;
             JOptionPane.showMessageDialog(null, mensagem);
@@ -54,21 +53,63 @@ public class Main {
          }
     }
 
+    //ATV5
+    public static String errorMessage(String erro){
+    
+        JOptionPane.showMessageDialog(null, erro, "Erro", JOptionPane.ERROR_MESSAGE);
+        return "erro";
+    }
 
-    
-    
-    
-    
+    //ATV6
+    public static double calculadora(){
+        String[] operacoes = {"soma", "subtracao", "divisao", "multilicacao"}; 
+        int opcao = JOptionPane.showOptionDialog(null, "escolha uma operacao", "calculadora", 0, 0, null, operacoes, operacoes);
+        String num1 = JOptionPane.showInputDialog(null, "digite o primeiro numero");
+        String num2 = JOptionPane.showInputDialog(null, "digite o segundo numero");
 
+        double num1String = 0;
+        double num2String = 0;
+        try{
+            num1String = Double.parseDouble(num1);
+            num2String = Double.parseDouble(num2);}
+        catch (Exception e){
+            errorMessage("Caractere digitado não numérico!");
+        }
+
+        double resultado = 0;
+        
+        switch (opcao) {
+            case 0:
+                resultado = num1String + num2String;
+                JOptionPane.showMessageDialog(null,"resultado: " + resultado,"RESULTADO", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case 1:
+                resultado = num1String - num2String;
+                JOptionPane.showMessageDialog(null,"resultado: " + resultado,"RESULTADO", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case 2:
+                if (num2String == 0 || num1String == 0) {
+                    errorMessage("Não é possível realizar a operação!");
+                    break;
+                }
+                JOptionPane.showMessageDialog(null,"resultado: " + resultado,"RESULTADO", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case 3:
+                resultado = num1String * num2String;
+                JOptionPane.showMessageDialog(null,"resultado: " + resultado,"RESULTADO", JOptionPane.INFORMATION_MESSAGE);
+                break;
+            default:
+                break;
+        }
+       
+        return 0;
+    }
     public static void main(String[] args) {
         exibirMensagem();
         usuario();
         continuar();
         String opcaoEscolhida = mostrarMenu();
-        Mensagem(opcaoEscolhida);
-
-       
-            
-        
+        mensagem(opcaoEscolhida);
+        calculadora();
     } 
   }
