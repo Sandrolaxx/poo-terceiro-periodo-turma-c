@@ -1,4 +1,4 @@
-package LUCAS_EDUARDO_DE_LIMA.listas.listaseiss;
+package listas.listaseiss;
 
 import java.time.LocalDate;
 import java.util.List;

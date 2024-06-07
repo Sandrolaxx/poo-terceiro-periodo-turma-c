@@ -1,4 +1,4 @@
-package LUCAS_EDUARDO_DE_LIMA.listas.listaseiss;
+package listas.listaseiss;
 
 public abstract class Pessoa {
 

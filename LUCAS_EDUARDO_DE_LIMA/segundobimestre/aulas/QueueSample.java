@@ -1,4 +1,4 @@
-package segundobimestre.aulas;
+/*package segundobimestre.aulas;
 
 import java.util.LinkedList;
 
@@ -16,4 +16,4 @@ public static void main(String[] args) {
 
      
 }
-}
+} */

@@ -1,10 +1,10 @@
-package segundobimestre.aulas;
+/*package segundobimestre.aulas;
 
 public class EnumFormaPagamentos {
 
-    PIX(key:"PIX", description: "ins"),
-    CARTAO(key:"CARTAO"),
-    DINHEIRO(key:"DINHEIRO");
+   // PIX(key:"PIX", description: "ins"),
+   // CARTAO(key:"CARTAO"),
+   // DINHEIRO(key:"DINHEIRO");
 
     private String key;
 
@@ -26,4 +26,4 @@ public class EnumFormaPagamentos {
         return null;
     }
 
-}
+} */

@@ -1,4 +1,4 @@
-package segundobimestre.aulas;
+/*package segundobimestre.aulas;
 
 public class EnumSample {
     
@@ -38,4 +38,4 @@ static void main(String[] args){
 
 
 
-}
+} */
