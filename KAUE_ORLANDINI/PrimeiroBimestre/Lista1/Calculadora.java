@@ -6,7 +6,20 @@ public class Calculadora {
 
     private static int[][] vendas = new int[12][30];
     
-    
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
+    //asdasdasdasd
     
     static int i = 0;
 
