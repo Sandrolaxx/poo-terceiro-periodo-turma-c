@@ -117,7 +117,7 @@ public class Main {
                 return Double.parseDouble(input);
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(null,
-                        "Entrada Inválida!",
+                        e.getMessage(),
                         "Erro",
                         JOptionPane.ERROR_MESSAGE);
             }
