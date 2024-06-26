@@ -1,3 +1,4 @@
+package listas;
 public class ProdutoLista2 {
     private String nome;
 
