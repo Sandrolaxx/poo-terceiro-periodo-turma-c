@@ -1,4 +1,4 @@
-package LUCAS_EDUARDO_DE_LIMA.listas.listatres;
+package listas.listatres;
 
 import java.util.Scanner;
 

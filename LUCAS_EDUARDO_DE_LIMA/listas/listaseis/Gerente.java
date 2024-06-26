@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package listas.listaseis;
+=======
+/*package listas.listaseis;
+>>>>>>> ac19f0c294a06eda69abf66d9099cb555e97ebea
 
 import listas.listacinco.Pessoa;
 
@@ -8,7 +12,11 @@ import listas.listacinco.Pessoa;
 - Métodos apresentarse calcularMedia e calcularBonus.
 - Método apresentarse deve printar o nome, idade e Loja.
 - calcularMedia deve trazer a média dos salários.
+<<<<<<< HEAD
 - calcularBonus onde a fórmula é [salarioBase * 0.35].*/
+=======
+- calcularBonus onde a fórmula é [salarioBase * 0.35].
+>>>>>>> ac19f0c294a06eda69abf66d9099cb555e97ebea
 
 public class Gerente extends Pessoa {
 
@@ -43,4 +51,8 @@ public void apresentarse(){
 
 
     
+<<<<<<< HEAD
 }
+=======
+} */
+>>>>>>> ac19f0c294a06eda69abf66d9099cb555e97ebea

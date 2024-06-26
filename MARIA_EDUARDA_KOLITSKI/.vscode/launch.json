@@ -1,0 +1,63 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "segundob.Main",
+            "projectName": "MARIA_EDUARDA_KOLITSKI_6bb9977f"
+        },
+        {
+            "type": "java",
+            "name": "Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Teste",
+            "request": "launch",
+            "mainClass": "Ana_Castela.Teste",
+            "projectName": "MARIA_EDUARDA_KOLITSKI_6bb9977f"
+        },
+        {
+            "type": "java",
+            "name": "Calculadora",
+            "request": "launch",
+            "mainClass": "Dona_Gabi.Calculadora",
+            "projectName": "MARIA_EDUARDA_KOLITSKI_6bb9977f"
+        },
+        {
+            "type": "java",
+            "name": "Calculadora2",
+            "request": "launch",
+            "mainClass": "Dona_Gabi.Calculadora2",
+            "projectName": "MARIA_EDUARDA_KOLITSKI_6bb9977f"
+        },
+        {
+            "type": "java",
+            "name": "Teste(1)",
+            "request": "launch",
+            "mainClass": "Dona_Gabi.Myy_Plant.Teste",
+            "projectName": "MARIA_EDUARDA_KOLITSKI_6bb9977f"
+        },
+        {
+            "type": "java",
+            "name": "ListSample",
+            "request": "launch",
+            "mainClass": "segundob.ListSample",
+            "projectName": "MARIA_EDUARDA_KOLITSKI_6bb9977f"
+        },
+        {
+            "type": "java",
+            "name": "SetSample",
+            "request": "launch",
+            "mainClass": "segundob.SetSample",
+            "projectName": "MARIA_EDUARDA_KOLITSKI_6bb9977f"
+        }
+    ]
+}

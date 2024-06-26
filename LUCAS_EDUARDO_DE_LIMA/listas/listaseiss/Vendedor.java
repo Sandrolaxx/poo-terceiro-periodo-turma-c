@@ -1,4 +1,4 @@
-package LUCAS_EDUARDO_DE_LIMA.listas.listaseiss;
+package listas.listaseiss;
  /*1. Crie uma classe Vendedor com:
 
 Com os atributos nome, idade, Loja, cidade, rua, bairro,  salarioBase e salarioRecebido.

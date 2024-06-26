@@ -1,4 +1,4 @@
-package LUCAS_EDUARDO_DE_LIMA.listas.listasete;
+package listas.listasete;
 
 import java.util.ArrayList;
 import java.util.List;

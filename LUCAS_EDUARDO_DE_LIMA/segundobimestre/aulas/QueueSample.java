@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package segundobimestre.aulas;
+=======
+/*package segundobimestre.aulas;
+>>>>>>> ac19f0c294a06eda69abf66d9099cb555e97ebea
 
 import java.util.LinkedList;
 
@@ -16,4 +20,8 @@ public static void main(String[] args) {
 
      
 }
+<<<<<<< HEAD
 }
+=======
+} */
+>>>>>>> ac19f0c294a06eda69abf66d9099cb555e97ebea

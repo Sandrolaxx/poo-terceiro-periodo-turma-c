@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package segundobimestre.aulas;
 
 public class EnumFormaPagamentos {
@@ -5,6 +6,15 @@ public class EnumFormaPagamentos {
     PIX(key:"PIX", description: "ins"),
     CARTAO(key:"CARTAO"),
     DINHEIRO(key:"DINHEIRO");
+=======
+/*package segundobimestre.aulas;
+
+public class EnumFormaPagamentos {
+
+   // PIX(key:"PIX", description: "ins"),
+   // CARTAO(key:"CARTAO"),
+   // DINHEIRO(key:"DINHEIRO");
+>>>>>>> ac19f0c294a06eda69abf66d9099cb555e97ebea
 
     private String key;
 
@@ -26,4 +36,8 @@ public class EnumFormaPagamentos {
         return null;
     }
 
+<<<<<<< HEAD
 }
+=======
+} */
+>>>>>>> ac19f0c294a06eda69abf66d9099cb555e97ebea
