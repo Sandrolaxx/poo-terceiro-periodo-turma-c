@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 
 public class ConsultarConta {
 
+    // Método que recebe resposta do usuário
     public static String recebendoResposta() {
         String linhaDigitavel = JOptionPane.showInputDialog(
                 null,
@@ -20,20 +21,37 @@ public class ConsultarConta {
                 JOptionPane.QUESTION_MESSAGE);
 
         JFrame frame = new JFrame();
-        JOptionPane.showMessageDialog(frame, consultandoBoletos(linhaDigitavel), "Lista de convênios",
+        JOptionPane.showMessageDialog(frame, consultandoBoletos(linhaDigitavel), "Consulta de Boleto",
                 JOptionPane.INFORMATION_MESSAGE);
 
         return linhaDigitavel;
-    };
+    }
 
+    // Método utilizado para quebrar linhas
+    private static String quebrandoLinhas(String response) {
+
+        StringBuilder builder = new StringBuilder();
+        boolean entreAspas = false;
+
+        for (char c : response.toCharArray()) {
+            builder.append(c);
+            if (c == '"') {
+                entreAspas = !entreAspas;
+            } else if (!entreAspas && c == ',' || c=='[') {
+                builder.append("\n");
+            }
+        }
+        return builder.toString();
+    }
+
+    // Método para consultar o boleto com o código forneceido pelo cliente
     public static String consultandoBoletos(String linhaDigitavel) {
-
         try {
             URL url = new URL("https://sandbox.openfinance.celcoin.dev/v5/transactions/billpayments/authorize");
 
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            // Dados do json
+            // Dados do JSON
             String json = "{\r\n" +
                     "  \"barCode\": {\r\n" +
                     "    \"type\": 0,\r\n" +
@@ -45,7 +63,7 @@ public class ConsultarConta {
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("Accept", "application/json");
             connection.setRequestProperty("Authorization",
-                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiIwVS93WDNsWGZWN2psRHZabXN1WnJNRmdYdDRjbDBicmhGVFBqU0N4dHh5aEtrTzNCWDhmdHVlRFNTRFVwKzQ4V0c5d3ZSdzJSeWtCc2JCbDArbkVQbjBJejJ6T0hJY05NVGVIcVlpMFpHUzROWG9SNll2cTd3MjNPQWJubEVzVytKRUUrS3VkaFV5SWZuZElHQzhCUEVVc2dSKytrSy9WYjROdktRSGhqMS9GWjZFRU53QUc3UG1mRVRLK25rTlZNK1BHZVVmeHk5MHpTRWI2Q2hqcVZWU3VGbTJ6R3o1OFE0YStpRE5IK1JxWXRuV01nYlVJSWFhdVZpSmhUbVpOK0JuUS9vNW5FTjUvZHl1ZnBXcGE3VDJKTE9UaEtkZXNxYnRkM3E1alY3RVlTd1lLK0swOTNGQVdJbHZNc3ZxZlBxSVpMekVLNWhROWcxSm5lY2F1RXFJaWJIbG9xWk5Pc1FUODRRanZQZ05paU05L3dVYzV6dTMxQzhkRHlxRmJsMGVzcDByN1pLWGRhV2JhQ0JTQXNrZjlUeFlIMGRSZUdHbSs0RC91WEU2OEFOWHdKVUVnVG1rdTgwUlNNV1ZoUXR3VWFpcWxVcE94YnI3akpFa1ptU3MvS1BkNzcvYTZUZmdVS3FjUGZiQ3FKWldwRGtBUVNnai9ra1ltU2J1REo1bmNpeit3dzNoWENUVkhmMnRDdnJrMS9TNm5HcEZjQ0JKdG16aU9IT25ldU94Y1VyMEhseUJhbTJFT3JYWHlVRnBpTWwyY09FVzJvOWlodldXWWJRPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiZDM2MTU5YjRiYjg1NDRiYWIzMjIiLCJleHAiOjE3MTk1MTI5NzUsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.OOkamsctXv3ZkCaxXeJp_hT1Pqj6yfTp4d_AX6LP27A");
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiJqaytQSy9CY1JYU3ZiWW85ZkJGbFpUM01KUmcwQkhtQXJmRGxpWTlncklWZ21yU0FVd0ppd0VaNk0zWDAwTlZHdTJXSEpQR0NOVWdzS3QwN0lhZ2w4V05NNUpjeUs2NklZckd3SWcxN1pvd2wvZVkvUjFvRHFFbVpScnlLdXlhc0dSNFExcmM2dzVxWUU5aDB3Rkt1cVNjaDd1M1pvMG1jekdXY1V1aHRPaUdOK3VGLzVDZG5GVFFzOGxZZkJEd1FNZTByUng0SFZIZ3BYamJJUm9pUXRXVW5ZRlRFK1ROL2lPTGkzdTJZdUNZaXF0VmkwQzBITm5QbGFEeUNBRUE4SktnTk00L2hIdUZGblJDVHYrNjdCSUFEQnlTb0xINE05a0dBSmR6TVkxdGR2U1hXVXBkOE1QVEZJdm95ODhqWE1NeW8xN2lwS1F3TG1yMjRIdW15SFNnTmdVRlRQWDBTOXY2MG4yVHlvamJWZ25ySzZOWjVEY1l3VXJQOWVPRW40Zjl3Z2pWa3JmZVNyR3VKUXBmWWdTdGVDN2NaTEUwcDZWemRnZ0hreTZZb0c0NU40dm1hbWlYbHZlOHpmcGRUUXBybVRQMmg2Rkg4akp3SzRsc3lHOVhxV2pIVEFBaVNrQnlqT242ZDhjZjV5VnVsYVY0TkFmcXlNWE1NV0VHWllXcGhLaEtGeTFxYXExS3JNZ0RRYXRTQmJSdlBhUTZkNk1xMElvRHFsRStlcUY0VVE4YzR6TS8zZHlwd0lKMTcrQnBaYjV2c0xhcHNva2liVWhpMFpRPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiNTQ4NTcwMzkwNjQ0NDM5NjgwYzciLCJleHAiOjE3MTk1MTY0OTIsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.5qpn0EkrP_zLhkSgRujfLXd2TV7cJ1fKY-xkqJB9r-A");
             connection.setDoOutput(true);
 
             try (OutputStream os = connection.getOutputStream()) {
@@ -55,7 +73,7 @@ public class ConsultarConta {
 
             int responseCode = connection.getResponseCode();
 
-            //Bloco validando resposta da requisição
+            // Bloco validando resposta da requisição
             if (responseCode == HttpURLConnection.HTTP_OK) {
                 try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
                     StringBuilder response = new StringBuilder();
@@ -63,10 +81,11 @@ public class ConsultarConta {
                     while ((line = reader.readLine()) != null) {
                         response.append(line);
                     }
-                    return response.toString();
+                    // Formatando a resposta para quebrar a linha após vírgulas
+                    return quebrandoLinhas(response.toString());
                 }
 
-            //Bloco de validação da resposta de erros
+                // Bloco para validação dos erros
             } else if (responseCode == HttpURLConnection.HTTP_BAD_REQUEST) {
                 return "Erro 400: Solicitação inválida. Verifique a linha digitável e tente novamente.";
             } else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {

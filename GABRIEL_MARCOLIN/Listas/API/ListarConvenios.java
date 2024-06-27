@@ -21,10 +21,10 @@ public class ListarConvenios {
             Map<String, Object> jsonData = new HashMap<>();
 
             while (matcher.find()) {
-                String key = matcher.group(1);
-                String value = matcher.group(2);
+                String chave = matcher.group(1);
+                String valor = matcher.group(2);
 
-                jsonData.put(key, value);
+                jsonData.put(chave, valor);
             }
          
             StringBuilder sb = new StringBuilder();

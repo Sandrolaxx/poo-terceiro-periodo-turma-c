@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JOptionPane;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -19,7 +20,7 @@ public class Menu {
         frame.setSize(300, 300);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel(new BorderLayout());
+     //   JPanel panel = new JPanel(new BorderLayout());
         JPanel painelDeBotoes = new JPanel();
         painelDeBotoes.setLayout(new BoxLayout(painelDeBotoes, BoxLayout.Y_AXIS));
 
@@ -69,9 +70,16 @@ public class Menu {
         painelDeBotoes.add(Box.createRigidArea(new Dimension(10, 10)));
         painelDeBotoes.add(botaoContinuar);
 
-        panel.add(label, BorderLayout.NORTH);
-        panel.add(painelDeBotoes, BorderLayout.CENTER);
+        // Cria um JScrollPane que envolve o painelDeBotoes
+        JScrollPane scrollPane = new JScrollPane(painelDeBotoes);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
+        // Adiciona o rótulo e o JScrollPane ao painel principal do JFrame
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(label, BorderLayout.NORTH);
+        panel.add(scrollPane, BorderLayout.CENTER);
+
+        
         frame.add(panel);
         frame.setVisible(true);
     }
