@@ -142,7 +142,7 @@ public class Main {
 ATV5*/
 
 
-/*ATV6
+
 
 import javax.swing.JOptionPane;
 
@@ -225,4 +225,3 @@ public class Main {
     }
 }
 
-ATV6*/
