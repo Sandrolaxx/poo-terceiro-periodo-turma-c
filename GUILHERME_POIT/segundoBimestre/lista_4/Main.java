@@ -1,17 +1,22 @@
 package segundoBimestre.lista_4;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import javax.swing.JOptionPane;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.*;
 
-public class App {
+public class Main {
     private static final String LISTAR_CONVENIOS_URL = "https://sandbox.openfinance.celcoin.dev/v5/transactions/institutions";
     private static final String CONSULTAR_BOLETO_URL = "https://sandbox.openfinance.celcoin.dev/v5/transactions/billpayments/authorize";
-    private static final String AUTH_TOKEN = ("Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiJWd012VVliZ1RyUFdCN0NZK3ZjY2FpclFlejRvTzhJb09wRE5PaUNYMDhjV28xdXRKeXJOdEdUZ2NYZWNLMVkzd0pubDlBKzFMazBWSCtaZ1JycVFleU5PSnhCR0l1TmRBMFNoZFp0M2lLTUFGbjJaTks3WmFmQ2RJYW9xVVp1R2s1dXRqOXdVSktPc0ZvSVQ0U0hoWEd0Qk9rdkRFTGN5WnBsSjR4TXJzWWkvejZFWUZQa01Pd3NuaWdvYThSZDZYMThwYWM1TUtpZVJrMFpHdXBMQk1nc21UUTBwYVpxV1FEQm9MaUp3WElmVFI2NlV5NjgzREZMZjFWQjllZU9pUTBUN0FHeW8xVkdHVjBjTHQ4eVE5QzdCZnRDRmgxOXRLMnZKYW5Ldis3WmV2WHFTcUVIclN1YVVyN2tuK215am5HL2NqSGhnWkQycks2dHpvMWdXT3NKaldCZWxONSs1enpyRVpuSkU1UnEwTVpaN0Y2UnVUZnZOZldVMmR2eG5wYWhwKzZWR21HSHNqY2kvNzZvdkgwUXJVRzNKOFNaU25DbStFbjVOUGxYeU1lQTNENXI4Ymx6ZnpIc1loOUY2SFBmVC9zb2JWYzg3LzQ4YUFaVXdMTWpXbjZBQWxyenYwb3pneXhGUGRWL0gxN09vZ1Y4Q1FzRktaaEV3VXAxazdEOVpWUGRMV09NTGxtRzJsNFcrWUhBUzRVSWlyNi9ocys5QjE3d2ZQUmtXRjNBSnJscmVqNU5LK1VGWnQyMzdrdy9XRXlibWgydExKeU53Q1A2K2JRPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiMzIzNzUxNTdjODBhNGQ1MmJkZjkiLCJleHAiOjE3MTkzNjI4NDcsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.hBIOQZ3z-DK6sCpoM2AWNYnHRvNmLUDOE49iqo9mruU");
+    private static final String AUTH_TOKEN = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiJ1b1BzQ00yUHV2SjcydHVYbWpidUVUeHErYys3eENrUkxrcm5UQ1ZHVFRndEJYam0vOGVpRTF6UEUvNEI3dUhqZG9ha0hQSGpUWk5acGV2d3E3NThYZUQ2RSs4Q2hOeFZpMkVad04vTENmZEZRRFdvQklQQndmVmI4WFpYZEQ5ZjhGd1JJUkFldXdmWVgzQTNEQUk1a0MreVlHNGRHVlkxRWJmVmtjRlNkQ05BYVhYQUc5Qm43SGJXOTNhM0JiL0dKSnh4MXBoYWZZd1QyMzRld29GV1k3WkU5NXJUR1VrNWR2WkJzRTdvRVVnMFlQSHQ3YnY0Zm90Vlpmb3Z4MzBxUGVEeXNPQTRLOHFja3NSNWRrSzFyWVBCSUFBaXdYcjdQdnNrRTJtUnMzU2RDQkZqQ1ljMll1dEo2MWlRNm5ReDhnRFprSmkwdUVDRjgwU25YVTRmL3QweVlOVURrdUZFanB2MlltQzRUOGJzdU9GOFIrUlhnVUIzQ01KeHh0TWVpYnNDMGpBWlpWOVFsdFEvaG9PdWo4UTNYMERiMy91STA3SjNLNWZCYWZlR3Y0am9DUTRjZzBBaXRIbWNHZ2ZMQmE4WFU5ekZ4NkQ1dG1ucTJKNVVzK3ZVMExSbDF0b3NGR0o0RXM1VThmTER5Q3FVYlRQTHVjRkQvZmkzQUY1SFlvRnBmMFhnKzhzcnpNaUo4SUVOcVE3WEJRTFRjZUxuRG5kMGZwVGtTM0xvajRVQ0lwRjRnTmJ1ckV1elBNNURtdk1rR1hreVNCL3kvVlJFUFpyQ0pnPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiMjg0MzU4NmJjOWM3NDFkNzgyNzQiLCJleHAiOjE3MTk0OTk2MjUsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.WVpoEQW1lTqd233WBz8BvUJ_yeUpYQn3AIcJXUHoZ4k";
 
     public static void main(String[] args) {
         while (true) {
@@ -25,8 +30,12 @@ public class App {
             } else if (opcao == 1) {
                 String linhaDigitavel = JOptionPane.showInputDialog("Informe a linha digitável do boleto:");
                 if (linhaDigitavel != null) {
-                    String boletoInfo = consultarBoleto(linhaDigitavel);
-                    JOptionPane.showMessageDialog(null, boletoInfo, "Informações do Boleto", JOptionPane.INFORMATION_MESSAGE);
+                    try {
+                        String boletoInfo = consultarBoleto(linhaDigitavel);
+                        JOptionPane.showMessageDialog(null, boletoInfo, "Informações do Boleto", JOptionPane.INFORMATION_MESSAGE);
+                    } catch (IOException e) {
+                        JOptionPane.showMessageDialog(null, "Erro ao consultar boleto: " + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             } else {
                 break;
@@ -43,7 +52,6 @@ public class App {
             connection.setRequestProperty("Accept", "application/json");
             connection.setRequestProperty("Content-Type", "application/json");
 
-
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
             StringBuilder response = new StringBuilder();
             String line;
@@ -58,37 +66,64 @@ public class App {
         }
     }
 
-    private static String consultarBoleto(String linhaDigitavel) {
-        try {
-            URL url = new URL(CONSULTAR_BOLETO_URL);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("POST");
-            connection.setRequestProperty("Authorization", AUTH_TOKEN);
-            connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("Accept", "application/json");
-            connection.setDoOutput(true);
+    private static String consultarBoleto(String linhaDigitavel) throws IOException {
+        URL url = new URL(CONSULTAR_BOLETO_URL);
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            String jsonInputString = "{ \"linhaDigitavel\": \"" + linhaDigitavel + "\" }";
-            try (OutputStream os = connection.getOutputStream()) {
-                byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
-                os.write(input, 0, input.length);
-            }
+        String json = "{\n" +
+                "  \"barCode\": {\n" +
+                "    \"type\": 0,\n" +
+                "    \"digitable\": \"" + linhaDigitavel + "\"\n" +
+                "  }\n" +
+                "}";
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            StringBuilder response = new StringBuilder();
-            String line;
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("accept", "application/json");
+        connection.setRequestProperty("content-type", "application/json");
+        connection.setRequestProperty("Authorization", AUTH_TOKEN);
+        connection.setDoOutput(true);
 
-            while ((line = reader.readLine()) != null) {
-                response.append(line);
-            }
-
-            reader.close();
-
-            return response.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            return "Erro ao consultar boleto.";
+        try (OutputStream os = connection.getOutputStream()) {
+            byte[] input = json.getBytes(StandardCharsets.UTF_8);
+            os.write(input, 0, input.length);
         }
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        StringBuilder response = new StringBuilder();
+        String line;
+        while ((line = reader.readLine()) != null) {
+            response.append(line);
+        }
+        reader.close();
+        connection.disconnect();
+
+        return formatBoletoInfo(response.toString());
+    }
+
+    private static String formatBoletoInfo(String jsonResponse) {
+        Pattern pattern = Pattern.compile("\"(\\w+)\":\"([^\"]+)\"");
+        Matcher matcher = pattern.matcher(jsonResponse);
+
+        Map<String, String> jsonData = new HashMap<>();
+        while (matcher.find()) {
+            String key = matcher.group(1);
+            String value = matcher.group(2);
+            jsonData.put(key, value);
+        }
+
+        StringBuilder formattedInfo = new StringBuilder();
+        formattedInfo.append("Banco: ").append(jsonData.getOrDefault("assignor", "N/A")).append("\n");
+        formattedInfo.append("Data de Pagamento: ").append(jsonData.getOrDefault("payDueDate", "N/A")).append("\n");
+        formattedInfo.append("Data de Vencimento: ").append(jsonData.getOrDefault("dueDate", "N/A")).append("\n");
+        formattedInfo.append("Data de Liquidação: ").append(jsonData.getOrDefault("settleDate", "N/A")).append("\n");
+        formattedInfo.append("Pagador: ").append(jsonData.getOrDefault("payer", "N/A")).append("\n");
+        formattedInfo.append("Destinatário do documento: ").append(jsonData.getOrDefault("documentRecipient", "N/A")).append("\n");
+        formattedInfo.append("Hora Final: ").append(jsonData.getOrDefault("endHour", "N/A")).append("\n");
+        formattedInfo.append("Recebedor: ").append(jsonData.getOrDefault("recipient", "N/A")).append("\n");
+        formattedInfo.append("Registro de Data de Vencimento: ").append(jsonData.getOrDefault("dueDateRegister", "N/A")).append("\n");
+        formattedInfo.append("Hora Inicial: ").append(jsonData.getOrDefault("initeHour", "N/A")).append("\n");
+        formattedInfo.append("Documento Pagador: ").append(jsonData.getOrDefault("documentPayer", "N/A")).append("\n");
+
+        return formattedInfo.toString();
     }
 }
