@@ -2,43 +2,74 @@ package segundob.listas.lista4;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ConsultarBoleto {
-    public static String getJsonData(String linhaDigitavel) throws IOException, InterruptedException {
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://sandbox.openfinance.celcoin.dev/v5/transactions/billpayments/authorize"))
-                .header("accept", "application/json")
-                .header("content-type", "application/json")
-                .header("authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiJyRlh3cUJBZHd3dzN3UFJEMHNCbWRtdTdBTmJnei9FV2xNcU1KMis1SnJIaTJFc213azZZS3N0V09lSklaNndFV2RQTTlndHJFb1V3ek1rTGZLVFZ5dldCTExFcEN6TVlIMFc1V04xZE5VZkx4QW1XaERrYWp0NEZiSi9JT24wTWFLcFl1S0xueWpqRzBxd2x1NmRUMFQ1cUZwd1BHQjlUclNsYjFEMFczbjZHaStRSnlWdGhTL1JUa21mV3NHREZXakpwOFZpNlFuOVc3eFhiQjlxYU9COGZaa3BkeGJmR0E2MDRhTWJZT3dOQVAzTVlxYVpRekRQdlNXRHIwQWEwRHpobWpuWEFjZUhnN016MGFDUW9VL2IyZEwwYm1wK0k0VW1yZloxM3VwU3FsU0R1azYzZlJlazRHVUozdlZpeEFuRlprL1AvMmlxQ3VzVFpkbDJ3UEVQN0x1eHJmMHpQcVp6NkRGbHlONXZrU0ZYckg3ZVFWQWRmcHllM3lBQ09wcHFDT3JFb1h1bG9jSG5QN3hIZ3JIWG9PUTJmTFprcjFNM0NlQTVnbkdVSERyQ05iR3IvNmw0NVE3RmFLazEwV3lkNjJqaGlOaXpVajRTeFZEalljMG4vL2pjaHBBbkdZSm1NcFVmQlFXMDBOSXRSZ2kyNC9wdjRDcHNaSW5ES01EaHVhUVo1Q1hOZ1JsQWlRdU9RaHYyUzZJRWlsbFQvckk2NzdwR3hLQlRQRHMyVG9uZDFkWGZBdTRvWktVSjF3bXpHa0ZDdzlRTXk3QVRnSVp0MHRBPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiMzRjOTEzODY5ODFlNGEzNWFjY2IiLCJleHAiOjE3MTk0ODI1OTQsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.sxaAkJJDOB4W-4pMyTSulIv-6Q1hZxQ0DWfNVBhmmSw")
-                .method("POST", HttpRequest.BodyPublishers.ofString("{\"barCode\":{\"type\":0,\"digitable\":\"" + linhaDigitavel + "\"}}"))
-                .build();
-        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+    public static String getJsonData(String linhaDigitavel) {
+        try {
+            URL url = new URL("https://sandbox.openfinance.celcoin.dev/v5/transactions/billpayments/authorize");
 
-        Pattern pattern = Pattern.compile("\"(\\w+)\":\"([^\"]+)\"");
-        Matcher matcher = pattern.matcher(response.body());
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-        Map<String, Object> jsonData = new HashMap<>();
+            String json = "{\n" +
+                    "  \"barCode\": {\n" +
+                    "    \"type\": 0,\n" +
+                    "    \"digitable\": \"" + linhaDigitavel + "\"\n" +
+                    "  }\n" +
+                    "}";
 
-        while (matcher.find()) {
-            String key = matcher.group(1);
-            String value = matcher.group(2);
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("accept", "application/json");
+            connection.setRequestProperty("content-type", "application/json");
+            connection.setRequestProperty("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiI2bWlqUkpvU2dRRDduYmdCeVRtb2JpU2JKVlhqNFZQVFZpZW1ReG1vdVFwU3JuMjgrOTlkYWhLT3kxVU5QWDh3WnJ0UHF3Qm8yclF2K0h6NmViaGNmWkRBS2ZoL0VtYW1kZk0wNXVEUFFCU2phMHFTNXo5TVhtYnlHNVY0eGpJOUxpckRZQ1ZFS2lsaTZjekxqWFlqVVpvZUpEeTBXdWxWRG5laFFjUVN2dXo5cWhHb2RyVm5FU3FRYitDTW9kQXBzQmJmNE4zVTJVR1E1MnFVZm82eDJkRVp6YUl0U1BHU09tUE5lTHpMM1hGcFJWajV4cmNoWXVzRFJmUmNNcER1RmI2eTIwZnJDZGx3STFNNW9QQ3VZbkdlMVFwVFFhcmROOHliMkV4WCtwaEx5dTR3NUtiOHVOSWlhQmxoZ1BwbFF2Rk5PWWpJRlJHa0NzbnVNZ3BNTW1EeExFUXJCUXhMUllqOFU0NjBoZmxxQkphRlQ3TWtDR1hucXFlTzNDQXp3VUNqejMzN1Q5eE9LNFJMOUZURUhOWjFCcTRDTVR6Z3Z2ZDVXT09XcmpBTi9PazNWVlJUWGp2a29qNEFHSUQzUmErZEhEYVNvOWxIMmFreWtLV0lJdWpERkNodmFvWDF0ZWxDVkZJY1NBc0FVNytMMVBwL3A1YUNuUTN3RGFRL0pJckJYL29VTU5aR3E2Z05kejZvZGFvM2dSaVJ6SUxPSmk2Wmd0dllhR1YyWlVpUTlic1dWMG93aEIrTjI1TlRXS0FuaHhmbVl3bDNlR25Md2ZwMzNBPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiYmMwZjQyZjU1NmU2NDMxYjhlZjgiLCJleHAiOjE3MTk0ODU1ODMsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.MbcPQMLenF2xolXLAjNS4tb5CarrNmTK82zBsQfe0u4");
+            connection.setDoOutput(true);
 
-            jsonData.put(key, value);
+            try (OutputStream os = connection.getOutputStream()) {
+                byte[] input = json.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
+            }
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            StringBuilder response = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                response.append(line);
+            }
+
+            reader.close();
+            connection.disconnect();
+
+            Pattern pattern = Pattern.compile("\"(\\w+)\":\"([^\"]+)\"");
+            Matcher matcher = pattern.matcher(response.toString());
+
+            Map<String, Object> jsonData = new HashMap<>();
+
+            while (matcher.find()) {
+                String key = matcher.group(1);
+                String value = matcher.group(2);
+
+                jsonData.put(key, value);
+            }
+            System.out.println(jsonData);
+
+            showDataPanel(jsonData);
+
+            return response.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return null;
         }
-        System.out.println(jsonData);
-
-        showDataPanel(jsonData);
-
-        return response.body();
     }
 
     private static void showDataPanel(Map<String, Object> jsonData) {
