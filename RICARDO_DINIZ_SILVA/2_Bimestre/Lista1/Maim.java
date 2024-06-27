@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-public class Main {
+public class Maim {
   public static void main(String[] args) {
     // Atividade 1
     System.out.println("# Atividade 01 #");
