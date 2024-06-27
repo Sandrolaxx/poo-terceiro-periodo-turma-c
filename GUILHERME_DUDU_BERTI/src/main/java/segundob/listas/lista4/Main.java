@@ -10,6 +10,9 @@ public class Main {
         while (true) {
             String selecionar = (String) JOptionPane.showInputDialog(null, "Selecione a opção desejada: ",
                     "Menu", JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
+            if (selecionar == null) {
+                break;
+            }
             switch (selecionar) {
                 case "Consultar Convênio" -> consultarConvenio();
                 case "Consultar Boleto" -> consultarBoleto();
@@ -20,7 +23,6 @@ public class Main {
                         JOptionPane.ERROR_MESSAGE);
             }
         }
-
     }
 
     private static void consultarConvenio() {
@@ -37,6 +39,5 @@ public class Main {
                 null,
                 null);
         ConsultarBoleto.getJsonData(linhaDigitavel);
-
     }
 }

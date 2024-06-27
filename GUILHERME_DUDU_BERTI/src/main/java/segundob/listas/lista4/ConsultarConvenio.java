@@ -1,5 +1,6 @@
 package segundob.listas.lista4;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -14,7 +15,7 @@ public class ConsultarConvenio {
 
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Content-Type", "application/json");
-            connection.setRequestProperty("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiJyRlh3cUJBZHd3dzN3UFJEMHNCbWRtdTdBTmJnei9FV2xNcU1KMis1SnJIaTJFc213azZZS3N0V09lSklaNndFV2RQTTlndHJFb1V3ek1rTGZLVFZ5dldCTExFcEN6TVlIMFc1V04xZE5VZkx4QW1XaERrYWp0NEZiSi9JT24wTWFLcFl1S0xueWpqRzBxd2x1NmRUMFQ1cUZwd1BHQjlUclNsYjFEMFczbjZHaStRSnlWdGhTL1JUa21mV3NHREZXakpwOFZpNlFuOVc3eFhiQjlxYU9COGZaa3BkeGJmR0E2MDRhTWJZT3dOQVAzTVlxYVpRekRQdlNXRHIwQWEwRHpobWpuWEFjZUhnN016MGFDUW9VL2IyZEwwYm1wK0k0VW1yZloxM3VwU3FsU0R1azYzZlJlazRHVUozdlZpeEFuRlprL1AvMmlxQ3VzVFpkbDJ3UEVQN0x1eHJmMHpQcVp6NkRGbHlONXZrU0ZYckg3ZVFWQWRmcHllM3lBQ09wcHFDT3JFb1h1bG9jSG5QN3hIZ3JIWG9PUTJmTFprcjFNM0NlQTVnbkdVSERyQ05iR3IvNmw0NVE3RmFLazEwV3lkNjJqaGlOaXpVajRTeFZEalljMG4vL2pjaHBBbkdZSm1NcFVmQlFXMDBOSXRSZ2kyNC9wdjRDcHNaSW5ES01EaHVhUVo1Q1hOZ1JsQWlRdU9RaHYyUzZJRWlsbFQvckk2NzdwR3hLQlRQRHMyVG9uZDFkWGZBdTRvWktVSjF3bXpHa0ZDdzlRTXk3QVRnSVp0MHRBPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiMzRjOTEzODY5ODFlNGEzNWFjY2IiLCJleHAiOjE3MTk0ODI1OTQsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.sxaAkJJDOB4W-4pMyTSulIv-6Q1hZxQ0DWfNVBhmmSw");
+            connection.setRequestProperty("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiI1UkJZalRsZnVHNlphazF1aWJwNTZJai9JSlI3aURQRVllU3Z2ckUvMU40QW9Edkdvc244Zm82NHovbFQ5Q0ZETUFrSDg5RDgycU9pU0NoTkc5WWZVWkI5c1VzQmFUci9PVGJlSmJmVk9WTHNYdHZVVGQ3clhwTmtnTFJGUi9FTEplbSt5aFZ6LytENSs1WjcvRzVpcE5BSVJUSzBmOWdOZkhObUpVbzJoQVFrekNPbTAxclRYM1J4UnV4ZVNBQm1zUm9aOWtDL1VLUjFDbmhOVjVnVFowREdHV1Jsd0cyWE1XWjYvb0pYa2xURlRkbFF6QUd5bkNNMWNtdHZPK1JuNHNtTCsvMVArNG5mb0ovV2x0czRkaHYwb2drUHMzTmQwQ085U1hpK0I5a3VhZUJ6ajMxcHFSKysvbnBUQmdmWWFzRmFqMUJFNkdGU25zeUlDZW1IUHNtaEtVNGlmTnZtN1gwMVhvL1FyTjhwQVVJK29oTUhjSEJmRVB5Q1F6K3IxcS9FRU0ySVpkT0FxVnlHWHBjYWVWbEdpbHFSMHcvZjZPUUJDME8vRUVYY2M2Kzljd09KREZCcUR0bFBGNnFvQVVNcU83VjdLUUk4QW9zN0F6RStaQzhERURNRVQ5UkR1d3BtSm5BTGRWNjVGamQwQU9GWVAyQi9NOGZuZWladFJjZnJicUcvRmdsSEk3eHUycDdHQ1F0UkZNR0lVMGxIMXFzQ3I2U0l6aURadjNvUmpxbU02SjdLQS92R2EwbU9WZjUyVGRtVFYwTnhsRU4yTTVaRyt3PT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiYTdkNWU4OTczMjJlNGI4NWJjZTgiLCJleHAiOjE3MTk1Mjc1NzEsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.luCMCmeMDkSF6yhUw215Ldnif1_U4P6aL4x4DAhJOD4");
             connection.setDoOutput(true);
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -30,7 +31,8 @@ public class ConsultarConvenio {
             return response.toString();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null,
+                    "Erro ao verificar os convênios.", "ERRO", JOptionPane.ERROR_MESSAGE);
         }
         return null;
     }

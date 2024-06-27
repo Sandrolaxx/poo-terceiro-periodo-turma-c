@@ -3,6 +3,7 @@ package segundob.listas.lista4;
 import javax.swing.*;
 import java.awt.*;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -30,7 +31,7 @@ public class ConsultarBoleto {
             connection.setRequestMethod("POST");
             connection.setRequestProperty("accept", "application/json");
             connection.setRequestProperty("content-type", "application/json");
-            connection.setRequestProperty("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiI2bWlqUkpvU2dRRDduYmdCeVRtb2JpU2JKVlhqNFZQVFZpZW1ReG1vdVFwU3JuMjgrOTlkYWhLT3kxVU5QWDh3WnJ0UHF3Qm8yclF2K0h6NmViaGNmWkRBS2ZoL0VtYW1kZk0wNXVEUFFCU2phMHFTNXo5TVhtYnlHNVY0eGpJOUxpckRZQ1ZFS2lsaTZjekxqWFlqVVpvZUpEeTBXdWxWRG5laFFjUVN2dXo5cWhHb2RyVm5FU3FRYitDTW9kQXBzQmJmNE4zVTJVR1E1MnFVZm82eDJkRVp6YUl0U1BHU09tUE5lTHpMM1hGcFJWajV4cmNoWXVzRFJmUmNNcER1RmI2eTIwZnJDZGx3STFNNW9QQ3VZbkdlMVFwVFFhcmROOHliMkV4WCtwaEx5dTR3NUtiOHVOSWlhQmxoZ1BwbFF2Rk5PWWpJRlJHa0NzbnVNZ3BNTW1EeExFUXJCUXhMUllqOFU0NjBoZmxxQkphRlQ3TWtDR1hucXFlTzNDQXp3VUNqejMzN1Q5eE9LNFJMOUZURUhOWjFCcTRDTVR6Z3Z2ZDVXT09XcmpBTi9PazNWVlJUWGp2a29qNEFHSUQzUmErZEhEYVNvOWxIMmFreWtLV0lJdWpERkNodmFvWDF0ZWxDVkZJY1NBc0FVNytMMVBwL3A1YUNuUTN3RGFRL0pJckJYL29VTU5aR3E2Z05kejZvZGFvM2dSaVJ6SUxPSmk2Wmd0dllhR1YyWlVpUTlic1dWMG93aEIrTjI1TlRXS0FuaHhmbVl3bDNlR25Md2ZwMzNBPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiYmMwZjQyZjU1NmU2NDMxYjhlZjgiLCJleHAiOjE3MTk0ODU1ODMsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.MbcPQMLenF2xolXLAjNS4tb5CarrNmTK82zBsQfe0u4");
+            connection.setRequestProperty("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiI1UkJZalRsZnVHNlphazF1aWJwNTZJai9JSlI3aURQRVllU3Z2ckUvMU40QW9Edkdvc244Zm82NHovbFQ5Q0ZETUFrSDg5RDgycU9pU0NoTkc5WWZVWkI5c1VzQmFUci9PVGJlSmJmVk9WTHNYdHZVVGQ3clhwTmtnTFJGUi9FTEplbSt5aFZ6LytENSs1WjcvRzVpcE5BSVJUSzBmOWdOZkhObUpVbzJoQVFrekNPbTAxclRYM1J4UnV4ZVNBQm1zUm9aOWtDL1VLUjFDbmhOVjVnVFowREdHV1Jsd0cyWE1XWjYvb0pYa2xURlRkbFF6QUd5bkNNMWNtdHZPK1JuNHNtTCsvMVArNG5mb0ovV2x0czRkaHYwb2drUHMzTmQwQ085U1hpK0I5a3VhZUJ6ajMxcHFSKysvbnBUQmdmWWFzRmFqMUJFNkdGU25zeUlDZW1IUHNtaEtVNGlmTnZtN1gwMVhvL1FyTjhwQVVJK29oTUhjSEJmRVB5Q1F6K3IxcS9FRU0ySVpkT0FxVnlHWHBjYWVWbEdpbHFSMHcvZjZPUUJDME8vRUVYY2M2Kzljd09KREZCcUR0bFBGNnFvQVVNcU83VjdLUUk4QW9zN0F6RStaQzhERURNRVQ5UkR1d3BtSm5BTGRWNjVGamQwQU9GWVAyQi9NOGZuZWladFJjZnJicUcvRmdsSEk3eHUycDdHQ1F0UkZNR0lVMGxIMXFzQ3I2U0l6aURadjNvUmpxbU02SjdLQS92R2EwbU9WZjUyVGRtVFYwTnhsRU4yTTVaRyt3PT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiYTdkNWU4OTczMjJlNGI4NWJjZTgiLCJleHAiOjE3MTk1Mjc1NzEsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.luCMCmeMDkSF6yhUw215Ldnif1_U4P6aL4x4DAhJOD4");
             connection.setDoOutput(true);
 
             try (OutputStream os = connection.getOutputStream()) {
@@ -65,9 +66,10 @@ public class ConsultarBoleto {
             showDataPanel(jsonData);
 
             return response.toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Erro ao consultar o boleto, verifique a linha digitavel", "ERRO",
+                    JOptionPane.ERROR_MESSAGE);
             return null;
         }
     }
