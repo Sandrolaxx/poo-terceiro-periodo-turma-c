@@ -27,7 +27,7 @@ class Produto {
     }
 }
 
-public class main {
+public class Main { // Certifique-se de que o nome do arquivo é Main.java
     public static void main(String[] args) {
         
         // ATV1:
