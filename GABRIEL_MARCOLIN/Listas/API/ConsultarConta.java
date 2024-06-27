@@ -45,7 +45,7 @@ public class ConsultarConta {
             connection.setRequestProperty("Content-Type", "application/json");
             connection.setRequestProperty("Accept", "application/json");
             connection.setRequestProperty("Authorization",
-                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiJvOFpLbW94SnhWWnJUeHhNVmhGWFV6MkI1L0huQ1JlVk1QaVFXRmU2bk5icjl5TG0rZkVLYWRINktEa3Z5dEtCVGxyYlhoSkVmM3Vsd2dGTzFPZnJCRHRmaWowMVd3S1dxb2hPSTBMNm8raWJaSTNZdWVjQThXditpYUFIQTc3YjVVK2E4aUo5ZktPUTBzT253YXc0TEFKZWE1K0IyalNJdU1yUSt3V0o3Q21lMVY5Q0lJcWUzd21GZEhrc0dCTVpUdGRLemtKRmtXOEJpdDRpdnozVE9rV05QZVhNMUk2T3hXaGlYb1VCK2cwYU96SkNrZ2xyMDBTUUgraDJ1ZUVsbitaZTlvT01DZmF0MzdTT0pYNWtXSElva2R3dlpuelB5K0tzUWdRUGNZc0lKZlZnVWh5cTRjMlJoRkNiWFhPMy9PaDlmV2NCUzIxNDc3K0xkQmE3ajlWN0I2ZTkybVJOMys3VGQ0WW1Nb3Q1N1krOXRnM1dPbU5tUHlRMkVjZW92QnFEUWx2dzdGMGJVTGRTNWRsOTZqN0NML3dtbldZZjlmdHJ3MHdRM1NpL25YQjJMY3BXd2tXNFlqRVFqNjMrYXMvZTFOeENscUZlamN2OEJsenAzU2RydzBFeDdtOEdISkNXZkg3bjcxaFNSUHR5RlNNMjM0M0h1STF2emRFS0dJNitpU1Y5UnVUR2ptdVphKzR5VnZTK0ZLU1ArajJmTEpmT1BPcmdiWlM4VXVydkMvR3lNZGtzLzZHb1lIMXo2UG5ZZUc4Si9jS2hvMlFUQ0RubnpBPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiOWI0MWUwNDZhYzU4NGExNGIyNjEiLCJleHAiOjE3MTk0Mjg3MjQsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.7QMXP2PWtGP7n1ravBlJiIs6NPDwNkxuzg6mf4nDKVM");
+                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjbGllbnRfaWQiOiI0MWI0NGFiOWE1NjQ0MC50ZXN0ZS5jZWxjb2luYXBpLnY1IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6InRlc3RlIiwidGVuYW50X3VzZXIiOiIwVS93WDNsWGZWN2psRHZabXN1WnJNRmdYdDRjbDBicmhGVFBqU0N4dHh5aEtrTzNCWDhmdHVlRFNTRFVwKzQ4V0c5d3ZSdzJSeWtCc2JCbDArbkVQbjBJejJ6T0hJY05NVGVIcVlpMFpHUzROWG9SNll2cTd3MjNPQWJubEVzVytKRUUrS3VkaFV5SWZuZElHQzhCUEVVc2dSKytrSy9WYjROdktRSGhqMS9GWjZFRU53QUc3UG1mRVRLK25rTlZNK1BHZVVmeHk5MHpTRWI2Q2hqcVZWU3VGbTJ6R3o1OFE0YStpRE5IK1JxWXRuV01nYlVJSWFhdVZpSmhUbVpOK0JuUS9vNW5FTjUvZHl1ZnBXcGE3VDJKTE9UaEtkZXNxYnRkM3E1alY3RVlTd1lLK0swOTNGQVdJbHZNc3ZxZlBxSVpMekVLNWhROWcxSm5lY2F1RXFJaWJIbG9xWk5Pc1FUODRRanZQZ05paU05L3dVYzV6dTMxQzhkRHlxRmJsMGVzcDByN1pLWGRhV2JhQ0JTQXNrZjlUeFlIMGRSZUdHbSs0RC91WEU2OEFOWHdKVUVnVG1rdTgwUlNNV1ZoUXR3VWFpcWxVcE94YnI3akpFa1ptU3MvS1BkNzcvYTZUZmdVS3FjUGZiQ3FKWldwRGtBUVNnai9ra1ltU2J1REo1bmNpeit3dzNoWENUVkhmMnRDdnJrMS9TNm5HcEZjQ0JKdG16aU9IT25ldU94Y1VyMEhseUJhbTJFT3JYWHlVRnBpTWwyY09FVzJvOWlodldXWWJRPT0iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3VzZXJkYXRhIjoiZDM2MTU5YjRiYjg1NDRiYWIzMjIiLCJleHAiOjE3MTk1MTI5NzUsImlzcyI6IkNlbGNvaW5BUEkiLCJhdWQiOiJDZWxjb2luQVBJIn0.OOkamsctXv3ZkCaxXeJp_hT1Pqj6yfTp4d_AX6LP27A");
             connection.setDoOutput(true);
 
             try (OutputStream os = connection.getOutputStream()) {
@@ -53,24 +53,33 @@ public class ConsultarConta {
                 os.write(input, 0, input.length);
             }
 
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            StringBuilder response = new StringBuilder();
-            String line;
+            int responseCode = connection.getResponseCode();
 
-            while ((line = reader.readLine()) != null) {
-                response.append(line);
+            //Bloco validando resposta da requisição
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                try (BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()))) {
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    return response.toString();
+                }
+
+            //Bloco de validação da resposta de erros
+            } else if (responseCode == HttpURLConnection.HTTP_BAD_REQUEST) {
+                return "Erro 400: Solicitação inválida. Verifique a linha digitável e tente novamente.";
+            } else if (responseCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
+                return "Erro 401: Não autorizado. Verifique suas credenciais.";
+            } else if (responseCode == HttpURLConnection.HTTP_NOT_FOUND) {
+                return "Erro 404: Recurso não encontrado. Verifique a linha digitável e tente novamente.";
+            } else {
+                return "Erro " + responseCode + ": Ocorreu um erro desconhecido.";
             }
 
-            reader.close();
-
-            connection.disconnect();
-
-            return response.toString();
         } catch (Exception e) {
             e.printStackTrace();
-
-            return null;
+            return "Erro: Não foi possível consultar o boleto. Por favor, tente novamente mais tarde.";
         }
     }
-
 }

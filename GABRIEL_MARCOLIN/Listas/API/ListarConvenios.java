@@ -18,7 +18,6 @@ public class ListarConvenios {
 
             Matcher matcher = pattern.matcher(jsonResponse);
 
-
             Map<String, Object> jsonData = new HashMap<>();
 
             while (matcher.find()) {
