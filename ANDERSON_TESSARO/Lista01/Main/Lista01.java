@@ -1,4 +1,4 @@
-package Lista01;
+package Lista01.Main;
 
 import java.util.ArrayList;
 import java.util.HashMap;
