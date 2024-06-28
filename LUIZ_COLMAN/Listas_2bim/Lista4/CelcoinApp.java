@@ -1,6 +1,3 @@
-Claro, vou continuar o código da função `consultarBoleto()` e adicionar algumas melhorias. Aqui está o código completo da classe `CelcoinApp`:
-
-```java
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
