@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class Listaum {
     public static void main(String[] args) {
         // ATV1
         ArrayList<String> amigos = new ArrayList<>();
@@ -11,7 +11,7 @@ public class Main {
         amigos.add("Armando");
         
         System.out.println("ATV1:");
-        for (String nome : colegas) {
+        for (String nome : amigos) {
             System.out.println(nome.charAt(0) + " - " + nome);
         }
         
@@ -30,7 +30,7 @@ public class Main {
         jogosZerados.add("The Last Of Us 2");
         jogosZerados.add("The Last Of Us 2");
         jogosZerados.add("Tom Clancy's Ghost Recon");
-        jogosZerados.add("Red Dead Redempetion 2");
+        jogosZerados.add("Red Dead Redemption 2"); // Corrigido a ortografia
         
         System.out.println("\nATV3:");
         System.out.println("Lista de jogos zerados antes de remover duplicatas: " + jogosZerados);
