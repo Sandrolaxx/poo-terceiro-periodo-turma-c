@@ -1,4 +1,4 @@
-package KAUE_ORLANDINI.SegundoBimestre;
+package KAUE_ORLANDINI.SegundoBimestre.Lista1;
 
 import java.util.ArrayList;
 import java.util.HashSet;
