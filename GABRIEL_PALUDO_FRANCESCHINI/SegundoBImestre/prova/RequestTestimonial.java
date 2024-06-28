@@ -1,4 +1,4 @@
-package listasfacul.prova;
+package GABRIEL_PALUDO_FRANCESCHINI.SegundoBImestre.prova;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

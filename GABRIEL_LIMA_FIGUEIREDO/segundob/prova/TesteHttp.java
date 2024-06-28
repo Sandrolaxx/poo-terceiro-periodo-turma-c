@@ -1,4 +1,4 @@
-package provaB2;
+package GABRIEL_LIMA_FIGUEIREDO.segundob.prova;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

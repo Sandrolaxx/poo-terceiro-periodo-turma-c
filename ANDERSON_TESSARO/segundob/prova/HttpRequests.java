@@ -1,4 +1,4 @@
-package org.example;
+package ANDERSON_TESSARO.segundob.prova;
 
 import javax.swing.*;
 import java.io.BufferedReader;

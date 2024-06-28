@@ -1,3 +1,5 @@
+package BERNARDO_SMARCZEWSKI.segundobi.prova;
+
 import javax.swing.JOptionPane;
 
 public class Erro {

@@ -1,4 +1,4 @@
-package pooprova;
+package EDUARDA_GABRIELI_KACPRZAK.segundob.prova;
 
 import javax.swing.JOptionPane;
 

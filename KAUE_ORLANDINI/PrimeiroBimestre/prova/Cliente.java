@@ -1,4 +1,4 @@
-package KAUE_ORLANDINI.PrimeiroBimestre.prova;
+package KAUE_ORLANDINI.prova;
 
 import java.util.Scanner;
 

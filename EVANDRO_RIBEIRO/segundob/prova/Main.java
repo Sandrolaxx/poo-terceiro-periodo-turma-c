@@ -1,4 +1,4 @@
-package segundob.prova;
+package EVANDRO_RIBEIRO.segundob.prova;
 
 import javax.swing.*;
 import java.io.*;
