@@ -26,7 +26,7 @@ nb-configuration.xml
 .factorypath
 
 # OSX
-.DS_Store
+# .DS_Store
 
 # Vim
 *.swp
