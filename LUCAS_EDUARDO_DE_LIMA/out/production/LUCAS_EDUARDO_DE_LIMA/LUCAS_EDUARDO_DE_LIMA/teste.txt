@@ -1,6 +1,0 @@
-<<<<<<< HEAD
-Olá eu sou o Lucas Lima!
-=======
-Ola eu sou o Lucas!
->>>>>>> c2fe60b6ed8dbd610b8636010a6646e26b416ed7
-

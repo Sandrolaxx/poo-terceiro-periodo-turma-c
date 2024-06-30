@@ -1,3 +1,39 @@
+# Destaques - Geral✨
+
+Abaixo, os melhores alunos, apresentando um domínio do conteúdo abordado, suas contribuições são verdadeiramente dignas de reconhecimento e admiração.
+
+* **Bernardo Vascelai Smarczewski**
+* João Vítor Gonçalves Da Costa
+* Rafael Roani Gonçalves
+* Guilherme Dudu Berti
+* Maria Júlia Gonçalves Raposo Do Nascimento
+* Marcelo Piluski Pozzobon
+* Kauê Andrade Padilha
+
+> Todos com nota superior a 9,3*
+
+Parabéns a todos, continuem assim que estão no caminho certo🚀
+
+---
+
+# Melhores testemunhos🗣
+
+![testimonials](https://github.com/Sandrolaxx/frostNext/assets/61207420/e554f97e-3388-4222-b4b9-c6e1abad2926)
+
+# Destaques do Repo - Segundo BI🏆
+
+Aqui está a lista dos principais colaboradores deste repositório no segundo bimestre. Eles se destacaram pela excelência de suas contribuições, dedicação constante e entendimento abrangente dos conceitos discutidos.
+
+* **Bernardo Vascelai Smarczewski**
+* **Guilherme Dudu Berti**
+* **João Vítor Gonçalves Da Costa**
+* Kauê Andrade Padilha
+* **Marcelo Piluski Pozzobon**
+* **Maria Júlia Gonçalves Raposo Do Nascimento**
+* **Rafael Roani Gonçalves**
+
+---
+
 # Destaques do Repo - Primeiro BI🏆
 
 Abaixo a lista dos melhores alunos que colaboram com este repositório. Os alunos se destacaram na qualidade de suas entregas, comprometimento em sala e compreensão do conteúdo de Programação Orientada a Objetos.
